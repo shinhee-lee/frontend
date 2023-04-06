@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBase">#FFCD29</color>
+    <color name="colorText">#57460E</color>
+    <color name="darker_gray">@android:color/darker_gray</color>
+    <color name="baseColor">@android:color/holo_orange_light</color>
+</resources>

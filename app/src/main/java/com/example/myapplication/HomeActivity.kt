@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -58,6 +59,13 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        //이야기 만들기 버튼
+        binding.createbtn.setOnClickListener{
+            val intent = Intent(this, MakestoryActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

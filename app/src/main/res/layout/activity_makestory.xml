@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".JoinActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            style="@style/TopBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/backbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/backxml"
+                    android:textColor="@color/black" />
+
+                <!--메인 문구-->
+                <TextView
+                    style="@style/FontStyle01"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="left"
+                    android:text="           이야기 창작"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.217" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.71">
+
+            <!-- 다운로드 버튼-->
+            <Button
+                android:id="@+id/downloadbtn"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="다운로드" />
+
+            <!--이미지 가져오기 버튼-->
+            <Button
+                android:id="@+id/gallerybtn"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="이미지 가져오기" />
+
+            <!--직접 그리기 버튼-->
+            <Button
+                android:id="@+id/selfdrawbtn"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="직접 그리기" />
+
+            <!--시나리오 생성 버튼-->
+            <Button
+                android:id="@+id/createstorybtn"
+                style="@style/ButtonStyle"
+                android:layout_width="170dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="시나리오 생성" />
+
+        </GridLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

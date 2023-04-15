@@ -126,7 +126,6 @@ class LoginActivity : AppCompatActivity() {
 
                     binding.idInput01.error = null
 
-
                     val idfromDB =
                         snapshot.child(id).child(Info.ID).getValue(
                             String::class.java

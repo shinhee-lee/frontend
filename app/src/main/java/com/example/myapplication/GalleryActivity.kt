@@ -82,7 +82,9 @@ class GalleryActivity : AppCompatActivity(){
 
         val response = client.newCall(request).enqueue(object: Callback{
             override fun onFailure(call: Call, e: IOException) {
-                TODO("Not yet implemented")
+                runOnUiThread{
+                    Toast.makeText(applicationContext, "Failed to upload image: " + e.message, Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onResponse(call: Call, response: Response) {

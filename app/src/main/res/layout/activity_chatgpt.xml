@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GalleryActivity">
+        tools:context=".ChatgptActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,9 +27,8 @@
 
                 <Button
                     android:id="@+id/backbtn"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="#00ff0000"
                     android:drawableLeft="@drawable/backxml"
@@ -38,13 +37,14 @@
                 <!--메인 문구-->
                 <TextView
                     style="@style/FontStyle01"
-                    android:layout_width="300dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="left"
-                    android:text="       이미지 가져오기"
+                    android:layout_marginRight="80dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:text="chatGPT 사용 여부"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -54,32 +54,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!--<RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_below="@id/linear">
-
-            <ImageView
-                android:id="@+id/imgview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/baseline_insert_photo_24" />
-
-        </RelativeLayout>-->
-
         <LinearLayout
-            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,40 +64,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.6">
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/framelayout">
 
-                <ImageView
-                    android:id="@+id/imgview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/galleryxml" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textRed"
+            <ImageView
+                android:id="@+id/imgview"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:text="이미지를 선택한 후 변경하고 싶은 물체의 좌표를 찍어주세요 "/>
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/chatgpt_img"/>
 
-            <!--sentence-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginTop="50dp"
                 android:gravity="center">
-
                 <TextView
                     style="@style/FontStyle01"
                     android:layout_width="100dp"
@@ -130,15 +87,15 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="center"
                     android:text="sentence : " />
-
                 <EditText
                     android:id="@+id/sentence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="25dp"
                     android:gravity="center_vertical"
-                    android:hint="변환하고 싶은 분위기를 입력하세요."
-                    android:textSize="16sp" />
+                    android:hint="chatGPT에게 보낼 만들고 싶은 이야기"
+                    android:privateImeOptions="defaultInputmode=korean"
+                    android:textSize="16sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -148,56 +105,29 @@
                 android:layout_marginTop="50dp"
                 android:gravity="center">
                 <Button
-                    android:id="@+id/gallerybtn"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="갤러리에서 가져오기"
-                    style="@style/ButtonGrey"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/selectbtn"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="좌표 선택 완료"
-                    style="@style/ButtonGrey"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/maskbtn"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="mask 선택하러 가기"
-                    style="@style/ButtonGrey"/>
-            </LinearLayout>
-
-            <!--<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/okbtn"
+                    android:id="@+id/usebtn"
                     style="@style/ButtonGrey"
-                    android:layout_width="250dp"
+                    android:layout_width="400dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="chatGPT를 사용하여 이야기 생성" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/notusebtn"
+                    style="@style/ButtonStyle"
+                    android:layout_width="400dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="이 사진을 DB에 저장" />
-            </LinearLayout>-->
+                    android:text="chatGPT 사용 안함" />
+            </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

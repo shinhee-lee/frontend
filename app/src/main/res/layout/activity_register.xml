@@ -92,6 +92,22 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
+            <!--아이디 중복 확인-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/iddupbtn"
+                    style="@style/ButtonGrey"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="아이디 중복 확인" />
+            </LinearLayout>
+
             <!--닉네임-->
             <!--소셜에 노출되는 이름-->
             <LinearLayout

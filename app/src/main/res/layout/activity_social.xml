@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SocialActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                style="@style/TopBackground">
+
+                <Button
+                    android:id="@+id/backbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:drawableLeft="@drawable/backxml"
+                    android:textColor="@color/black" />
+
+                <!--메인 문구-->
+                <TextView
+                    style="@style/FontStyle01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="오브젝트 다운로드"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.217" />
+            </LinearLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginLeft="10dp">
+
+                <Button
+                    android:id="@+id/objectbtn"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="물체"
+                    android:layout_gravity="left|bottom"
+                    style="@style/FontStyle01"
+                    android:backgroundTint="@color/darker_gray"
+                    />
+                <Button
+                    android:id="@+id/backgroundbtn"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:text="배경"
+                    android:layout_gravity="right|bottom"
+                    android:layout_weight="1"
+                    style="@style/FontStyle01"
+                    android:backgroundTint="@color/darker_gray"
+                    />
+                <!--<Button
+                    android:id="@+id/storybtn"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="스토리"
+                    android:layout_gravity="bottom"
+                    style="@style/FontStyle01"
+                    android:background="@drawable/socialselectbutton"
+                    />-->
+            </GridLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="620dp"
+                android:background="@color/baseColor_lighter"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/darker_gray"
+                    android:text = "시작하려면 누르세요"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    />
+
+                <!--<GridLayout
+                    android:id="@+id/grid_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <Button
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_margin="10dp"
+                        />
+                    <Button
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_margin="10dp"
+                        />
+                    <Button
+                        android:layout_height="110dp"
+                        android:layout_width="110dp"
+                        android:layout_margin="10dp"
+                        />
+                </GridLayout>-->
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

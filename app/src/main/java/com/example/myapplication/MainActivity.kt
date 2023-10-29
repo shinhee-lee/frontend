@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         //gif logo
         Glide.with(this).load(R.raw.logo1).into(binding.logo00)
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.startbtn.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
+            /*finish()*/
         }
         /*connServer()*/
     }

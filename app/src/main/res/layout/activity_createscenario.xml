@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            style="@style/TopBackground">
+
+            <Button
+                android:id="@+id/backbtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00ff0000"
+                android:drawableLeft="@drawable/backxml"
+                android:textColor="@color/black" />
+
+            <!--메인 문구-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="100dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="이야기 만들기"
+                />
+        </LinearLayout>
+
+        <!--사진 (드래그앤드롭)-->
+        <FrameLayout
+            android:id="@+id/pictureLayout"
+            android:layout_width="match_parent"
+            android:layout_height="450dp">
+            <ImageView
+                android:id="@+id/backgroundview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </FrameLayout>
+
+        <!--삭제, 저장, 마지막 페이지, 다음 페이지 버튼-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <Button
+                android:id="@+id/deletebtn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBase"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="오브젝트\n삭제"/>
+            <Button
+                android:id="@+id/savebtn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBase"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="페이지\n저장"/>
+            <Button
+                android:id="@+id/nextbtn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBase"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="다음\n페이지"/>
+            <Button
+                android:id="@+id/lastbtn"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorBase"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:text="만들기\n끝내기"/>
+        </LinearLayout>
+
+        <!--오브젝트 리스트-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+            <!--물체/배경 선택 버튼-->
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/contentbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="줄거리"
+                    android:textSize="15sp"
+                    android:backgroundTint="@color/darker_gray"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/backgroundbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="배경"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/darker_gray"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/objectbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="물체"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/darker_gray"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!--이미지 뷰 리스트-->
+            <LinearLayout
+                android:id="@+id/objectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/baseColor_lighter">
+
+                <EditText
+                    android:id="@+id/existingEditText"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    />
+
+                <Button
+                    android:id="@+id/startbtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/darker_gray"
+                    android:text="시작하려면 누르세요"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

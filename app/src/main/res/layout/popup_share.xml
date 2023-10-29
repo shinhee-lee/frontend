@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        android:text="공유하시겠습니까?"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/yesButton"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorBase"
+            android:textColor="@color/colorText"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="예" />
+        <Button
+            android:id="@+id/noButton"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorBase"
+            android:textColor="@color/colorText"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="아니오" />
+    </LinearLayout>
+</LinearLayout>

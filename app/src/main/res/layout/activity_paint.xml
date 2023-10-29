@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaintActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/painttoolbar"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/backbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:drawableLeft="@drawable/backxml" />
+
+        <ImageButton
+            android:id="@+id/penbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/paintblackcircle" />
+
+        <ImageButton
+            android:id="@+id/clearbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/paintwhitecircle" />
+
+        <ImageButton
+            android:id="@+id/savebtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="80dp"
+            android:background="@drawable/baseline_download_24"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@id/toolbar">
+
+        <include layout="@layout/paint_view"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_below="@id/relativeLayout">
+        <TextView
+            style="@style/FontStyle01"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="sentence : " />
+        <EditText
+            android:id="@+id/sentence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:gravity="center_vertical"
+            android:hint="변환하고싶은 분위기를 입력하세요."
+            android:privateImeOptions="defaultInputmode=korean"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

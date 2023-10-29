@@ -69,5 +69,17 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.3.0')
 
+    def coroutine_version = "1.6.1"
+    // Coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+
+    //이메일
+    implementation 'com.sun.mail:android-mail:1.6.2'
+    implementation 'com.sun.mail:android-activation:1.6.2'
+
+    //색상휠
+    /*implementation("com.github.skydoves:colorpicker-compose:1.0.2")*/
+    /*implementation 'com.github.yukuku:ambilwarna:2.0.1'*/
 
 }

@@ -29,6 +29,7 @@
                     android:id="@+id/profile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:layout_weight="1"
                     android:src="@drawable/profile"
                     android:layout_margin="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -39,9 +40,9 @@
                 <TextView
                     style="@style/FontStyle01"
                     android:id="@+id/nickname"
-                    android:layout_width="250dp"
+                    android:layout_weight="13"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:gravity="left"
                     android:text="닉네임"
                     android:textSize="15sp"
@@ -57,11 +58,11 @@
                 <!--메뉴 버튼-->
                 <Button
                     android:id="@+id/menubtn"
+                    android:layout_weight="0"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="20dp"
                     android:drawableLeft="@drawable/baseline_menu_24"
-                    android:backgroundTint="@color/baseColor" />
+                    android:backgroundTint="@color/colorBase" />
             </LinearLayout>
         </LinearLayout>
 
@@ -76,54 +77,36 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.7">
 
-            <!--이야기 창작 버튼-->
-            <LinearLayout
+            <Button
+                android:id="@+id/createbtn"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="30dp"
+                android:drawableTop="@drawable/createxml"
+                android:backgroundTint="@color/colorBase"
+                android:gravity="center"
+                android:text="이야기 창작"
+                android:textColor="@color/colorText"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/createbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:backgroundTint="@color/baseColor"
-                    android:text="이야기 창작"
-                    android:textColor="@color/colorText"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
-<!--
-                    android:drawableTop="@drawable/lightbulbxml"
--->
-
-            </LinearLayout>
-
-            <!--이야기 읽기 버튼-->
-            <LinearLayout
+            <Button
+                android:id="@+id/readbtn"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/readbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginBottom="100dp"
-                    android:layout_marginLeft="100dp"
-                    android:layout_marginRight="100dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:backgroundTint="@color/baseColor"
-                    android:text="이야기 읽기"
-                    android:textColor="@color/colorText"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
-                    <!--android:drawableTop="@drawable/bookxml"-->
-
-            </LinearLayout>
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/bookxml"
+                android:gravity="center"
+                android:backgroundTint="@color/colorBase"
+                android:text="이야기 읽기"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+            <!--android:drawableTop="@drawable/bookxml"-->
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

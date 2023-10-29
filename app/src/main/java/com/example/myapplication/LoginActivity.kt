@@ -16,22 +16,30 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 @SuppressLint("CheckResult")
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
+    /*private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
 
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Firebase
+        /*//Firebase
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
+        database = FirebaseDatabase.getInstance()*/
 
         //gif logo
         Glide.with(this).load(R.raw.logo1).into(binding.logo01)
@@ -50,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
         idStream.subscribe{
             showTextMinAlert(it, "Password")
         }
+
         //로그인 버튼 활성화
         val invalidFieldsStream = Observable.combineLatest(
             idStream,
@@ -62,7 +71,8 @@ class LoginActivity : AppCompatActivity() {
                 isValid ->
             if (isValid){
                 binding.loginbtn.isEnabled = true
-                binding.loginbtn.backgroundTintList = ContextCompat.getColorStateList(this, R.color.baseColor)
+                binding.loginbtn.backgroundTintList = ContextCompat.getColorStateList(this, R.color.colorBase)
+                binding.loginbtn.setTextColor(ContextCompat.getColorStateList(this, R.color.colorText))
             }
             else {
                 binding.loginbtn.isEnabled = false
@@ -97,15 +107,15 @@ class LoginActivity : AppCompatActivity() {
         binding.registerbtn.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-            finish()
+            /*finish()*/
         }
-        /*
-            //아이디/비번 찾기 버튼
-            binding.idpwSearch.setOnClickListener{
-                val intent = Intent(this, IdpwSearchActivity::class.java)
-                startActivity(intent)
-                finish()
-            }*/
+
+        //아이디 비번 찾기 버튼
+        binding.idpwSearchbtn.setOnClickListener {
+            val intent = Intent(this, IdpwSearchActivity::class.java)
+            startActivity(intent)
+            /*finish()*/
+        }
 
     }
     //아이디 최소 길이는 6자, 패스워드 최소 길이는 10자
@@ -116,8 +126,97 @@ class LoginActivity : AppCompatActivity() {
             binding.pwInput01.error = if (isNotValid) "패스워드를 입력하세요." else null
     }
 
+
     private fun loginUser(id: String, password: String){
-        val databaseRef = database.reference.child("users")
+        val intent = Intent(this, HomeActivity::class.java)
+
+        val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
+        val url = "http://221.163.223.200:5000/image"
+        /*val url = "http://192.168.1.38:83/image"*/
+        val client = OkHttpClient.Builder()
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .build()
+
+        /*val idArray = JSONArray()
+            .put("test1")
+            .put("test2")
+            .put("test3")*/
+
+        val json = JSONObject()
+        json.put("key", "1")
+        json.put("id", id)
+        json.put("password", password)
+
+        val body = RequestBody.create(JSON, json.toString())
+        val request = Request.Builder()
+            .url(url)
+            .post(body)
+            .build()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(
+                        applicationContext,
+                        "Failed to register: " + e.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful){
+                    val bodyString = response.body?.string()
+
+                    if(bodyString != null){
+                        try{
+                            val jsonObject = JSONObject(bodyString)
+                            val dataString = jsonObject.getString("ok_sign")
+
+                            runOnUiThread{
+                                if (dataString == "1"){
+                                    /*Toast.makeText(
+                                        applicationContext,
+                                        "로그인 성공",
+                                        Toast.LENGTH_SHORT
+                                    ).show()*/
+
+                                    intent.putExtra("idInput", id) //홈 액티비티로 id값 보내기
+                                    intent.putExtra("pwInput", password)
+                                    startActivity(intent)   //홈 액티비티로 넘어가기
+
+                                } else if(dataString == "0"){
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "로그인 실패",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        } catch(e: JSONException){
+                            runOnUiThread{
+                                Toast.makeText(
+                                    applicationContext,
+                                    "서버에서 받은 값 없음: "+e.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    } else{
+                        runOnUiThread {
+                            Toast.makeText(
+                                applicationContext,
+                                "회원 정보 서버 전송 실패",
+                                Toast.LENGTH_SHORT
+                            ).show() }
+                    }
+                }
+                response.close()
+            }
+        })
+
+        /*val databaseRef = database.reference.child("users")
         val checkUser = databaseRef.orderByChild("id").equalTo(id)
 
         checkUser.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -145,7 +244,7 @@ class LoginActivity : AppCompatActivity() {
                             intent.putExtra("idInput", id)
                             startActivity(intent)
 
-                            /*Toast.makeText(this@LoginActivity, "${binding.idInput01.text} 로그인 성공", Toast.LENGTH_SHORT).show()*/
+                            *//*Toast.makeText(this@LoginActivity, "${binding.idInput01.text} 로그인 성공", Toast.LENGTH_SHORT).show()*//*
 
                         } else{
                             binding.pwInput01.error = "잘못된 패스워드"
@@ -153,29 +252,6 @@ class LoginActivity : AppCompatActivity() {
                     } else{
                         binding.idInput01.error = "아이디 재입력"
                     }
-
-                    /*val pwfromDB =
-                        snapshot.child(id).child("pw").getValue(
-                            String::class.java
-                        )
-                    if(pwfromDB == password){
-                        binding.idInput01.error = null
-
-                        val idfromDB =
-                            snapshot.child(id).child(Info.ID).getValue(
-                                String::class.java
-                            )
-
-                        *//*val intent = Intent(applicationContext, MainActivity::class.java) //아마도 수정
-                        intent.putExtra(Info.ID, idfromDB)
-                        startActivity(intent)
-                        finish()*//*
-
-                        Toast.makeText(this@LoginActivity, "${binding.idInput01.text} 로그인 성공", Toast.LENGTH_SHORT).show()
-                    } else{
-                        binding.pwInput01.error = "잘못된 패스워드"
-                        binding.pwInput01.requestFocus()
-                    }*/
                 } else{
                     binding.idInput01.error = "존재하지 않는 사용자"
                 }
@@ -183,6 +259,6 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {
             }
-        })
+        })*/
     }
 }

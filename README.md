@@ -25,6 +25,8 @@ AI를 이용하여 편리하게 동화책을 만들 수 있도록 하는 애플�
 ## 📋 시스템 구성도
 <img width="457" alt="image" src="https://github.com/shinhee-lee/frontend/assets/103517160/0d320202-9dd6-417c-87a8-1913ad6bf9fd">
 
+## 📽 데모 동영상
+![image](https://github.com/shinhee-lee/frontend/assets/103517160/d283e58e-687b-4fcd-b80c-badb8c4bd059)
 
 ## 📌 주요 기능
 AI를 이용해 *오브젝트를 생성하여 이야기를 만듭니다.  
